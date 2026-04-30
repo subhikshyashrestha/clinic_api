@@ -51,21 +51,30 @@ def doctor_detail(request, pk):
 
 ####################   patient         ###########
 
+
 @api_view(['GET','POST'])
 @permission_classes([IsAuthenticated])
 def patient_list(request):
-    patients = Patient.objects.select_related('user').all()
+    if request.method == 'GET':
 
-    data = [
-        {
-            "id": p.id,
-            "username": p.user.username,
-            "age": p.age
-        }
-        for p in patients
-    ]
+        patients = Patient.objects.select_related('user').all()
 
-    return Response(data)
+        data = [
+            {
+                "id": p.id,
+                "username": p.user.username,
+                "age": p.age
+            }
+            for p in patients
+        ]
+
+        return Response(data)
+    if request.method == 'POST':
+        serializer = PatientSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data,status=201)
+        return Response(serializer.errors, status=400)
 
 @api_view(['GET','PUT','DELETE'])
 @permission_classes([IsAuthenticated])
