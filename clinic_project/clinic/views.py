@@ -70,7 +70,7 @@ def patient_list(request):
                 "address": p.address,
                 "medical_conditions": p.medical_conditions,
                 "blood_group": p.blood_group,
-                "emergency_contact": p.emergency_contact
+                "emergency_contact":p.emergency_contact
             }
             for p in patients
         ]

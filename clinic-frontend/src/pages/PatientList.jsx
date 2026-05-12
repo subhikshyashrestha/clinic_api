@@ -33,7 +33,7 @@ const handleLogout = () =>{
           <p>Name:{p.username}</p>
             <p>Age:{p.age}</p>
             <p>Gender:{p.gender}</p>
-            <p>Height:{p.height},Weight:{p.weight}</p>
+            <p>Height:{p.height}, Weight:{p.weight}</p>
             <p>Phone:{p.phone}</p>
             <p>Address:{p.address}</p>
             <p>Blood Group:{p.blood_group}</p>
