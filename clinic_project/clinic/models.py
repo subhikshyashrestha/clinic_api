@@ -5,6 +5,8 @@ class Doctor(models.Model):
     user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     specialization = models.CharField(max_length=100)
     experience = models.CharField(max_length=100)
+    qualification = models.CharField(max_length=100, blank=True)
+    phone = models.CharField(max_length=15, blank=True)
     bio = models.TextField(blank=True)
     is_available = models.BooleanField(default=True)
     created_at = models.DateTimeField(auto_now_add=True)
